@@ -31,6 +31,7 @@
           {
             "name": "businessId",
             "dataType": "string",
+            "isUnique": true,
             "sourceColumn": "businessId"
           },
           {
@@ -194,12 +195,6 @@
               ]
             }
           }
-        ],
-        "measures": [
-          {
-            "name": "Business Count",
-            "expression": " COUNT(DimBusiness[businessId])"
-          }
         ]
       },
       {
@@ -208,6 +203,7 @@
           {
             "name": "organizationId",
             "dataType": "string",
+            "isUnique": true,
             "sourceColumn": "organizationId"
           },
           {
@@ -251,19 +247,106 @@
               ]
             }
           }
+        ]
+      },
+      {
+        "name": "DimLocation",
+        "columns": [
+          {
+            "name": "locationId",
+            "dataType": "string",
+            "isUnique": true,
+            "sourceColumn": "locationId"
+          },
+          {
+            "name": "locationCode",
+            "dataType": "string",
+            "sourceColumn": "locationCode"
+          },
+          {
+            "name": "locationName",
+            "dataType": "string",
+            "sourceColumn": "locationName"
+          },
+          {
+            "name": "businessId",
+            "dataType": "string",
+            "sourceColumn": "businessId"
+          },
+          {
+            "name": "areaId",
+            "dataType": "string",
+            "sourceColumn": "areaId"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          },
+          {
+            "name": "deletedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "deletedAt"
+          },
+          {
+            "name": "organizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimLocation = Source{[Schema=\"dbo\",Item=\"DimLocation\"]}[Data]",
+                "in",
+                "    dbo_DimLocation"
+              ]
+            }
+          }
         ],
         "measures": [
           {
-            "name": "Organization Count",
-            "expression": " COUNT(DimOrganization[organizationId])"
+            "name": "OrgCount",
+            "expression": " COUNTROWS(RELATEDTABLE(DimOrganization))"
+          },
+          {
+            "name": "BusCount",
+            "expression": " COUNTROWS(RELATEDTABLE(DimBusiness))"
+          },
+          {
+            "name": "LocCount",
+            "expression": " COUNTROWS(RELATEDTABLE(DimLocation))"
           }
         ]
       }
     ],
     "relationships": [
       {
-        "name": "4626f58d-a5e6-431a-8783-ca892576812a",
-        "fromTable": "DimBusiness",
+        "name": "12378f74-3495-41d3-ba39-2b84351256d7",
+        "fromTable": "DimLocation",
+        "fromColumn": "businessId",
+        "toTable": "DimBusiness",
+        "toColumn": "businessId"
+      },
+      {
+        "name": "45f1c687-42bb-4c0d-9647-3bd2f8367ee4",
+        "fromTable": "DimLocation",
         "fromColumn": "organizationId",
         "toTable": "DimOrganization",
         "toColumn": "organizationId"
