@@ -1,0 +1,8 @@
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\bin\Model.asdatabase
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\bin\Model.deploymenttargets
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\bin\Model.deploymentoptions
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\obj\Development\SSAS Portal.smproj.AssemblyReference.cache
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\obj\Development\SSAS Portal.smproj.CoreCompileInputs.cache
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\obj\Development\Model.asdatabase
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\obj\Development\Model.deploymentoptions
+C:\Users\boredguys\Desktop\Latest\bravo\SSAS Portal\obj\Development\Model.deploymenttargets

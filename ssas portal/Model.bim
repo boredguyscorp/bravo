@@ -1,0 +1,280 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/BOREDGUYS\\SQL2022;portal",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "BOREDGUYS\\SQL2022",
+            "database": "portal"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "boredguys\\sql2022;portal",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimBusiness",
+        "columns": [
+          {
+            "name": "businessId",
+            "dataType": "string",
+            "sourceColumn": "businessId"
+          },
+          {
+            "name": "businessCode",
+            "dataType": "string",
+            "sourceColumn": "businessCode"
+          },
+          {
+            "name": "businessName",
+            "dataType": "string",
+            "sourceColumn": "businessName"
+          },
+          {
+            "name": "initialCode",
+            "dataType": "string",
+            "sourceColumn": "initialCode"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "organizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
+          },
+          {
+            "name": "apiKey",
+            "dataType": "string",
+            "sourceColumn": "apiKey"
+          },
+          {
+            "name": "tradeName",
+            "dataType": "string",
+            "sourceColumn": "tradeName"
+          },
+          {
+            "name": "operatedBy",
+            "dataType": "string",
+            "sourceColumn": "operatedBy"
+          },
+          {
+            "name": "tinNo",
+            "dataType": "string",
+            "sourceColumn": "tinNo"
+          },
+          {
+            "name": "taxLiable",
+            "dataType": "boolean",
+            "sourceColumn": "taxLiable"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "address",
+            "dataType": "string",
+            "sourceColumn": "address"
+          },
+          {
+            "name": "address2",
+            "dataType": "string",
+            "sourceColumn": "address2"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city"
+          },
+          {
+            "name": "province",
+            "dataType": "string",
+            "sourceColumn": "province"
+          },
+          {
+            "name": "postalCode",
+            "dataType": "string",
+            "sourceColumn": "postalCode"
+          },
+          {
+            "name": "contactPerson",
+            "dataType": "string",
+            "sourceColumn": "contactPerson"
+          },
+          {
+            "name": "position",
+            "dataType": "string",
+            "sourceColumn": "position"
+          },
+          {
+            "name": "website",
+            "dataType": "string",
+            "sourceColumn": "website"
+          },
+          {
+            "name": "accountNo",
+            "dataType": "string",
+            "sourceColumn": "accountNo"
+          },
+          {
+            "name": "telNo",
+            "dataType": "string",
+            "sourceColumn": "telNo"
+          },
+          {
+            "name": "telNo2",
+            "dataType": "string",
+            "sourceColumn": "telNo2"
+          },
+          {
+            "name": "mobileNo",
+            "dataType": "string",
+            "sourceColumn": "mobileNo"
+          },
+          {
+            "name": "mobileNo2",
+            "dataType": "string",
+            "sourceColumn": "mobileNo2"
+          },
+          {
+            "name": "logo",
+            "dataType": "string",
+            "sourceColumn": "logo"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          },
+          {
+            "name": "taxCode",
+            "dataType": "string",
+            "sourceColumn": "taxCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimBusiness = Source{[Schema=\"dbo\",Item=\"DimBusiness\"]}[Data]",
+                "in",
+                "    dbo_DimBusiness"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Business Count",
+            "expression": " COUNT(DimBusiness[businessId])"
+          }
+        ]
+      },
+      {
+        "name": "DimOrganization",
+        "columns": [
+          {
+            "name": "organizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
+          },
+          {
+            "name": "organizationCode",
+            "dataType": "string",
+            "sourceColumn": "organizationCode"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          },
+          {
+            "name": "organizationName",
+            "dataType": "string",
+            "sourceColumn": "organizationName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimOrganization = Source{[Schema=\"dbo\",Item=\"DimOrganization\"]}[Data]",
+                "in",
+                "    dbo_DimOrganization"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Organization Count",
+            "expression": " COUNT(DimOrganization[organizationId])"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4626f58d-a5e6-431a-8783-ca892576812a",
+        "fromTable": "DimBusiness",
+        "fromColumn": "organizationId",
+        "toTable": "DimOrganization",
+        "toColumn": "organizationId"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

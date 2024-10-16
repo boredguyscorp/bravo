@@ -1,0 +1,251 @@
+{
+  "name": "SSAS Portal",
+  "compatibilityLevel": 1600,
+  "model": {
+    "name": "Portal",
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/BOREDGUYS\\SQL2022;portal",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "BOREDGUYS\\SQL2022",
+            "database": "portal"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "boredguys\\sql2022;portal",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimOrganization",
+        "columns": [
+          {
+            "name": "OrganizationId",
+            "dataType": "string",
+            "isUnique": true,
+            "sourceColumn": "OrganizationId"
+          },
+          {
+            "name": "OrganizationCode",
+            "dataType": "string",
+            "sourceColumn": "OrganizationCode"
+          },
+          {
+            "name": "OrganizationName",
+            "dataType": "string",
+            "sourceColumn": "Organization"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimOrganization = Source{[Schema=\"dbo\",Item=\"DimOrganization\"]}[Data]",
+                "in",
+                "    dbo_DimOrganization"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimBusiness",
+        "columns": [
+          {
+            "name": "BusinessId",
+            "dataType": "string",
+            "isUnique": true,
+            "sourceColumn": "BusinessId"
+          },
+          {
+            "name": "BusinessCode",
+            "dataType": "string",
+            "sourceColumn": "BusinessCode"
+          },
+          {
+            "name": "BusinessName",
+            "dataType": "string",
+            "sourceColumn": "Business"
+          },
+          {
+            "name": "initialCode",
+            "dataType": "string",
+            "sourceColumn": "initialCode"
+          },
+          {
+            "name": "OrganizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "tradeName",
+            "dataType": "string",
+            "sourceColumn": "tradeName"
+          },
+          {
+            "name": "operatedBy",
+            "dataType": "string",
+            "sourceColumn": "operatedBy"
+          },
+          {
+            "name": "tinNo",
+            "dataType": "string",
+            "sourceColumn": "tinNo"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "address",
+            "dataType": "string",
+            "sourceColumn": "address"
+          },
+          {
+            "name": "address2",
+            "dataType": "string",
+            "sourceColumn": "address2"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city"
+          },
+          {
+            "name": "province",
+            "dataType": "string",
+            "sourceColumn": "province"
+          },
+          {
+            "name": "postalCode",
+            "dataType": "string",
+            "sourceColumn": "postalCode"
+          },
+          {
+            "name": "contactPerson",
+            "dataType": "string",
+            "sourceColumn": "contactPerson"
+          },
+          {
+            "name": "position",
+            "dataType": "string",
+            "sourceColumn": "position"
+          },
+          {
+            "name": "website",
+            "dataType": "string",
+            "sourceColumn": "website"
+          },
+          {
+            "name": "accountNo",
+            "dataType": "string",
+            "sourceColumn": "accountNo"
+          },
+          {
+            "name": "telNo",
+            "dataType": "string",
+            "sourceColumn": "telNo"
+          },
+          {
+            "name": "telNo2",
+            "dataType": "string",
+            "sourceColumn": "telNo2"
+          },
+          {
+            "name": "mobileNo",
+            "dataType": "string",
+            "sourceColumn": "mobileNo"
+          },
+          {
+            "name": "mobileNo2",
+            "dataType": "string",
+            "sourceColumn": "mobileNo2"
+          },
+          {
+            "name": "logo",
+            "dataType": "string",
+            "sourceColumn": "logo"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimBusiness = Source{[Schema=\"dbo\",Item=\"DimBusiness\"]}[Data]",
+                "in",
+                "    dbo_DimBusiness"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Business Count",
+            "expression": " COUNT(DimBusiness[BusinessId])"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "03360f7e-4c50-415b-9074-ad692c723ced",
+        "fromTable": "DimBusiness",
+        "fromColumn": "OrganizationId",
+        "toTable": "DimOrganization",
+        "toColumn": "OrganizationId"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  }
+}

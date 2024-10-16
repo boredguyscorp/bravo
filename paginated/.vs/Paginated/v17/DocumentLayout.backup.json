@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\Paginated\\CustomerPostings.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
-      "RelativeMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|solutionrelative:Paginated\\CustomerPostings.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\Paginated\\CustomerList.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
       "RelativeMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|solutionrelative:Paginated\\CustomerList.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\Paginated\\CustomerPostings.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{1997A5AB-15C1-4780-A760-3D032692BF3A}|Paginated\\Paginated.rptproj|solutionrelative:Paginated\\CustomerPostings.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +18,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CustomerPostings.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\Paginated\\CustomerPostings.rdl",
               "RelativeDocumentMoniker": "Paginated\\CustomerPostings.rdl",
@@ -34,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CustomerList.rdl [Design]",
               "DocumentMoniker": "C:\\Users\\boredguys\\Desktop\\Latest\\bravo\\paginated\\Paginated\\CustomerList.rdl",
               "RelativeDocumentMoniker": "Paginated\\CustomerList.rdl",
