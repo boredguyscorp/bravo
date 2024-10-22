@@ -319,37 +319,272 @@
               ]
             }
           }
+        ]
+      },
+      {
+        "name": "FactOrganizationSets",
+        "columns": [
+          {
+            "name": "organizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
+          },
+          {
+            "name": "organizationCode",
+            "dataType": "string",
+            "sourceColumn": "organizationCode"
+          },
+          {
+            "name": "organizationName",
+            "dataType": "string",
+            "sourceColumn": "organizationName"
+          },
+          {
+            "name": "businessId",
+            "dataType": "string",
+            "sourceColumn": "businessId"
+          },
+          {
+            "name": "businessCode",
+            "dataType": "string",
+            "sourceColumn": "businessCode"
+          },
+          {
+            "name": "businessName",
+            "dataType": "string",
+            "sourceColumn": "businessName"
+          },
+          {
+            "name": "locationId",
+            "dataType": "string",
+            "sourceColumn": "locationId"
+          },
+          {
+            "name": "locationCode",
+            "dataType": "string",
+            "sourceColumn": "locationCode"
+          },
+          {
+            "name": "locationName",
+            "dataType": "string",
+            "sourceColumn": "locationName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_FactOrganizationSets = Source{[Schema=\"dbo\",Item=\"FactOrganizationSets\"]}[Data]",
+                "in",
+                "    dbo_FactOrganizationSets"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "OrganizationSets",
+            "levels": [
+              {
+                "name": "organizationName",
+                "ordinal": 0,
+                "column": "organizationName"
+              },
+              {
+                "name": "businessName",
+                "ordinal": 1,
+                "column": "businessName"
+              },
+              {
+                "name": "locationName",
+                "ordinal": 2,
+                "column": "locationName"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "columns": [
+          {
+            "name": "businessCode",
+            "dataType": "string",
+            "sourceColumn": "businessCode"
+          },
+          {
+            "name": "locationCode",
+            "dataType": "string",
+            "sourceColumn": "locationCode"
+          },
+          {
+            "name": "id",
+            "dataType": "string",
+            "sourceColumn": "id"
+          },
+          {
+            "name": "code",
+            "dataType": "string",
+            "sourceColumn": "code"
+          },
+          {
+            "name": "firstName",
+            "dataType": "string",
+            "sourceColumn": "firstName"
+          },
+          {
+            "name": "lastName",
+            "dataType": "string",
+            "sourceColumn": "lastName"
+          },
+          {
+            "name": "middleName",
+            "dataType": "string",
+            "sourceColumn": "middleName"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "groupId",
+            "dataType": "string",
+            "sourceColumn": "groupId"
+          },
+          {
+            "name": "classId",
+            "dataType": "string",
+            "sourceColumn": "classId"
+          },
+          {
+            "name": "tradeName",
+            "dataType": "string",
+            "sourceColumn": "tradeName"
+          },
+          {
+            "name": "website",
+            "dataType": "string",
+            "sourceColumn": "website"
+          },
+          {
+            "name": "tinNo",
+            "dataType": "string",
+            "sourceColumn": "tinNo"
+          },
+          {
+            "name": "taxLiable",
+            "dataType": "boolean",
+            "sourceColumn": "taxLiable"
+          },
+          {
+            "name": "taxType",
+            "dataType": "string",
+            "sourceColumn": "taxType"
+          },
+          {
+            "name": "creditLimit",
+            "dataType": "double",
+            "sourceColumn": "creditLimit"
+          },
+          {
+            "name": "balance",
+            "dataType": "double",
+            "sourceColumn": "balance"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          },
+          {
+            "name": "availableCredit",
+            "dataType": "double",
+            "sourceColumn": "availableCredit"
+          },
+          {
+            "name": "credit",
+            "dataType": "double",
+            "sourceColumn": "credit"
+          },
+          {
+            "name": "debit",
+            "dataType": "double",
+            "sourceColumn": "debit"
+          },
+          {
+            "name": "deletedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "deletedAt"
+          },
+          {
+            "name": "notes",
+            "dataType": "string",
+            "sourceColumn": "notes"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_DimCustomer = Source{[Schema=\"dbo\",Item=\"DimCustomer\"]}[Data]",
+                "in",
+                "    dbo_DimCustomer"
+              ]
+            }
+          }
         ],
         "measures": [
           {
-            "name": "OrgCount",
-            "expression": " COUNTROWS(RELATEDTABLE(DimOrganization))"
-          },
-          {
-            "name": "BusCount",
-            "expression": " COUNTROWS(RELATEDTABLE(DimBusiness))"
-          },
-          {
-            "name": "LocCount",
-            "expression": " COUNTROWS(RELATEDTABLE(DimLocation))"
+            "name": "Customer Count",
+            "expression": " COUNTROWS(DimCustomer)"
           }
         ]
       }
     ],
     "relationships": [
       {
-        "name": "12378f74-3495-41d3-ba39-2b84351256d7",
-        "fromTable": "DimLocation",
+        "name": "91f3f1bb-560d-46c3-952b-643fdb11a65b",
+        "fromTable": "FactOrganizationSets",
+        "fromColumn": "organizationId",
+        "toTable": "DimOrganization",
+        "toColumn": "organizationId"
+      },
+      {
+        "name": "897392d3-cb2e-444c-8331-1329240d5e44",
+        "fromTable": "FactOrganizationSets",
         "fromColumn": "businessId",
         "toTable": "DimBusiness",
         "toColumn": "businessId"
       },
       {
-        "name": "45f1c687-42bb-4c0d-9647-3bd2f8367ee4",
-        "fromTable": "DimLocation",
-        "fromColumn": "organizationId",
-        "toTable": "DimOrganization",
-        "toColumn": "organizationId"
+        "name": "a6054d05-3473-417b-a940-74f39fc04e42",
+        "fromTable": "FactOrganizationSets",
+        "fromColumn": "locationId",
+        "toTable": "DimLocation",
+        "toColumn": "locationId"
+      },
+      {
+        "name": "e98ec649-f2a5-480d-b1ff-c7f8d0ac52b1",
+        "fromTable": "DimCustomer",
+        "fromColumn": "businessCode",
+        "toTable": "DimBusiness",
+        "toColumn": "businessCode"
       }
     ],
     "annotations": [

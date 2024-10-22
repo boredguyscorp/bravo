@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SqlServerEmpire">
-  <ConnectionProperties>
-    <Extension>SQL</Extension>
-    <ConnectString>Data Source=BOREDGUYS\SQL2022;Initial Catalog=empire</ConnectString>
-  </ConnectionProperties>
-  <DataSourceID>c2a99ace-e112-4d7d-bc0e-37cd6c4e307d</DataSourceID>
-</RptDataSource>
