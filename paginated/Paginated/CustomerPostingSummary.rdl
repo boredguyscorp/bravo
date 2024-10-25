@@ -315,22 +315,22 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.36163in</Width>
+                  <Width>1.38098in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.1533in</Width>
+                  <Width>1.17265in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.89056in</Width>
+                  <Width>0.90991in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.99344in</Width>
+                  <Width>1.01279in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.27533in</Width>
+                  <Width>1.21134in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.37205in</Width>
+                  <Width>1.3393in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -920,11 +920,13 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                                   <Value>=Fields!createdAt.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>g</Format>
+                                    <Format>MM/dd/yy hh:mm tt</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>createdAt</rd:DefaultName>
@@ -1128,7 +1130,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1in</Size>
+                    <Size>1.01935in</Size>
                     <CellContents>
                       <Textbox Name="Textbox37">
                         <CanGrow>true</CanGrow>
@@ -1192,7 +1194,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1in</Size>
+                        <Size>1.01935in</Size>
                         <CellContents>
                           <Textbox Name="postingType">
                             <CanGrow>true</CanGrow>
@@ -1235,7 +1237,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                     </TablixMember>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1in</Size>
+                        <Size>1.01935in</Size>
                         <CellContents>
                           <Textbox Name="Textbox53">
                             <CanGrow>true</CanGrow>
@@ -1278,7 +1280,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1in</Size>
+                    <Size>1.01935in</Size>
                     <CellContents>
                       <Textbox Name="Textbox39">
                         <CanGrow>true</CanGrow>
@@ -1328,7 +1330,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
             <Top>1.58208in</Top>
             <Left>0.03845in</Left>
             <Height>1.51042in</Height>
-            <Width>8.04631in</Width>
+            <Width>8.0463in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1544,7 +1546,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>0.27542in</Top>
-            <Left>6.116in</Left>
+            <Left>6.241in</Left>
             <Height>0.77084in</Height>
             <Width>1.84375in</Width>
             <ZIndex>2</ZIndex>
@@ -1625,7 +1627,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
         <Height>3.32167in</Height>
         <Style />
       </Body>
-      <Width>8.08476in</Width>
+      <Width>8.08475in</Width>
       <Page>
         <PageHeader>
           <Height>1.18403in</Height>
@@ -2011,6 +2013,15 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
       <Prompt>businessCode</Prompt>
       <Hidden>true</Hidden>
     </ReportParameter>
+    <ReportParameter Name="fromDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=Today()</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>From</Prompt>
+    </ReportParameter>
     <ReportParameter Name="postingType">
       <DataType>String</DataType>
       <DefaultValue>
@@ -2028,15 +2039,6 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
         </DataSetReference>
       </ValidValues>
       <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="fromDate">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=Today()</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>From</Prompt>
     </ReportParameter>
     <ReportParameter Name="toDate">
       <DataType>DateTime</DataType>
@@ -2086,8 +2088,8 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>3</NumberOfColumns>
-      <NumberOfRows>6</NumberOfRows>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>5</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2095,28 +2097,28 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
           <ParameterName>businessCode</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>postingType</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>2</RowIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>fromDate</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>3</RowIndex>
+          <RowIndex>2</RowIndex>
           <ParameterName>toDate</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>4</RowIndex>
+          <RowIndex>3</RowIndex>
           <ParameterName>userName</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>5</RowIndex>
+          <RowIndex>4</RowIndex>
           <ParameterName>batchNo</ParameterName>
         </CellDefinition>
       </CellDefinitions>

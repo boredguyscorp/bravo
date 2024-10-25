@@ -1111,6 +1111,7 @@ WHERE businessCode = @businessCode</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2074,7 +2075,7 @@ WHERE businessCode = @businessCode</CommandText>
           <Value>className</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Matrix Grouping</Prompt>
+      <Prompt>Summary Group</Prompt>
       <ValidValues>
         <ParameterValues>
           <ParameterValue>

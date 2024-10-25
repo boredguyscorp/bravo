@@ -848,7 +848,7 @@ WHERE customerId = @customerId</CommandText>
                                   <Value>=Fields!createdAt.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>g</Format>
+                                    <Format>MM/dd/yy hh:mm tt</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1194,10 +1194,10 @@ WHERE customerId = @customerId</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.22858in</Width>
+                  <Width>1.25462in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.10358in</Width>
+                  <Width>1.12962in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1630,9 +1630,9 @@ WHERE customerId = @customerId</CommandText>
             </TablixRowHierarchy>
             <DataSetName>ViewMasterCustomer</DataSetName>
             <Top>0.19444in</Top>
-            <Left>5.61717in</Left>
+            <Left>5.56508in</Left>
             <Height>1.4432in</Height>
-            <Width>2.33216in</Width>
+            <Width>2.38425in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1644,10 +1644,10 @@ WHERE customerId = @customerId</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.89062in</Width>
+                  <Width>0.95173in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.29688in</Width>
+                  <Width>1.77604in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2070,7 +2070,7 @@ WHERE customerId = @customerId</CommandText>
             <Top>0.19444in</Top>
             <Left>0.03195in</Left>
             <Height>1.4432in</Height>
-            <Width>2.1875in</Width>
+            <Width>2.72777in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -2082,7 +2082,7 @@ WHERE customerId = @customerId</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.12845in</Width>
+                  <Width>1.06539in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2159,7 +2159,7 @@ WHERE customerId = @customerId</CommandText>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.85915in</Size>
+                    <Size>1.40138in</Size>
                     <CellContents>
                       <Textbox Name="GroupBySetMatrix">
                         <CanGrow>true</CanGrow>
@@ -2206,9 +2206,9 @@ WHERE customerId = @customerId</CommandText>
             </TablixRowHierarchy>
             <DataSetName>MasterCustomerPosting</DataSetName>
             <Top>0.19444in</Top>
-            <Left>2.40001in</Left>
+            <Left>2.92084in</Left>
             <Height>0.28864in</Height>
-            <Width>2.9876in</Width>
+            <Width>2.46677in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -2412,7 +2412,7 @@ WHERE customerId = @customerId</CommandText>
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>Customer List</Value>
+                          <Value>Customer Posting</Value>
                           <Style>
                             <FontSize>14pt</FontSize>
                             <FontWeight>Bold</FontWeight>
@@ -2605,7 +2605,7 @@ WHERE customerId = @customerId</CommandText>
     </ReportParameter>
     <ReportParameter Name="customerId">
       <DataType>String</DataType>
-      <Prompt>Customer</Prompt>
+      <Prompt>Customer List</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>MasterCustomer</DataSetName>
