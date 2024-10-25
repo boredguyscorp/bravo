@@ -53,9 +53,11 @@
     <DataSource Include="SqlServerPortalDw.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="0-Portrait.rdl" />
     <Report Include="CustomerGroupingSet.rdl" />
     <Report Include="CustomerList.rdl" />
-    <Report Include="PostingByCustomerId.rdl" />
+    <Report Include="CustomerPostingSummary.rdl" />
+    <Report Include="PostingByCustomer.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
