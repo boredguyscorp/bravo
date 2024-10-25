@@ -5,7 +5,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <ErrorLevel>2</ErrorLevel>
     <OverwriteDatasets>False</OverwriteDatasets>
-    <OverwriteDataSources>True</OverwriteDataSources>
+    <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
     <TargetReportFolder>Paginated</TargetReportFolder>
@@ -53,8 +53,9 @@
     <DataSource Include="SqlServerPortalDw.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="CustomerGroupingSet.rdl" />
     <Report Include="CustomerList.rdl" />
-    <Report Include="CustomerPostingsByCustId.rdl" />
+    <Report Include="PostingByCustomerId.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
