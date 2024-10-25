@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-10-25T06:53:00.1525499Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-10-25T10:08:26.6953058Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -288,11 +288,15 @@ WHERE businessCode = @businessCode</CommandText>
           <QueryParameter Name="@customerId">
             <Value>=Parameters!customerId.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@postingType">
+            <Value>=Parameters!postingType.Value</Value>
+          </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT  amount, refNo, remarks, posting.createdAt, userName, fullName, postingType.name AS postingType
 FROM MasterCustomerPosting AS posting
 JOIN RefPostingType AS postingType ON postingType.id = posting.postingTypeId  
-WHERE customerId = @customerId</CommandText>
+WHERE customerId = @customerId AND 
+posting.postingTypeId  IN (@postingType)</CommandText>
       </Query>
       <Fields>
         <Field Name="amount">
@@ -332,11 +336,19 @@ WHERE customerId = @customerId</CommandText>
           <QueryParameter Name="@businessCode">
             <Value>=Parameters!businessCode.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@firstName">
+            <Value>=Parameters!firstName.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@lastName">
+            <Value>=Parameters!lastName.Value</Value>
+          </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT id, CONCAT(firstName, ', ', lastName) AS fullName
+        <CommandText>SELECT id, CONCAT(lastName, ', ', firstName) AS fullName
 FROM MasterCustomer 
 WHERE businessCode = @businessCode 
-ORDER BY firstName ASC</CommandText>
+AND firstName LIKE '%' + ISNULL(@firstName, '') + '%'
+AND lastName LIKE '%' + ISNULL(@lastName, '') + '%'
+ORDER BY lastName ASC</CommandText>
       </Query>
       <Fields>
         <Field Name="id">
@@ -345,6 +357,30 @@ ORDER BY firstName ASC</CommandText>
         </Field>
         <Field Name="fullName">
           <DataField>fullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="PostingTypeList">
+      <Query>
+        <DataSourceName>SqlServerPortalDw</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@customerId">
+            <Value>=Parameters!customerId.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT DISTINCT(postingTypeId) AS value, RefPostingType.name AS label
+FROM MasterCustomerPosting 
+INNER JOIN RefPostingType ON RefPostingType.id = MasterCustomerPosting.postingTypeId
+WHERE customerId = @customerId</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="value">
+          <DataField>value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="label">
+          <DataField>label</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1158,7 +1194,7 @@ ORDER BY firstName ASC</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.614in</Width>
+                  <Width>1.22858in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.10358in</Width>
@@ -1594,9 +1630,9 @@ ORDER BY firstName ASC</CommandText>
             </TablixRowHierarchy>
             <DataSetName>ViewMasterCustomer</DataSetName>
             <Top>0.19444in</Top>
-            <Left>5.33519in</Left>
+            <Left>5.61717in</Left>
             <Height>1.4432in</Height>
-            <Width>2.71758in</Width>
+            <Width>2.33216in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1608,10 +1644,10 @@ ORDER BY firstName ASC</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.89062in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.09375in</Width>
+                  <Width>1.29688in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2034,8 +2070,146 @@ ORDER BY firstName ASC</CommandText>
             <Top>0.19444in</Top>
             <Left>0.03195in</Left>
             <Height>1.4432in</Height>
-            <Width>3.09375in</Width>
+            <Width>2.1875in</Width>
             <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix4">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.12845in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.28864in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="id">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!amount.Value)</Value>
+                                  <ActionInfo>
+                                    <Actions>
+                                      <Action>
+                                        <BookmarkLink>=Fields!postingType.Value</BookmarkLink>
+                                      </Action>
+                                    </Actions>
+                                  </ActionInfo>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.00;(#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>id</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="GroupBySetMatrix">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!postingType.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Sum(Fields!amount.Value)</Value>
+                      <Direction>Descending</Direction>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>1.85915in</Size>
+                    <CellContents>
+                      <Textbox Name="GroupBySetMatrix">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!postingType.Value</Value>
+                                <Style>
+                                  <Color>DimGray</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <ActionInfo>
+                          <Actions>
+                            <Action>
+                              <BookmarkLink>=Fields!postingType.Value</BookmarkLink>
+                            </Action>
+                          </Actions>
+                        </ActionInfo>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>None</Style>
+                          </Border>
+                          <BottomBorder>
+                            <Style>Solid</Style>
+                          </BottomBorder>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>MasterCustomerPosting</DataSetName>
+            <Top>0.19444in</Top>
+            <Left>2.40001in</Left>
+            <Height>0.28864in</Height>
+            <Width>2.9876in</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2417,6 +2591,18 @@ ORDER BY firstName ASC</CommandText>
       <Prompt>Business Code</Prompt>
       <Hidden>true</Hidden>
     </ReportParameter>
+    <ReportParameter Name="firstName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>First Name</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lastName">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Last Name</Prompt>
+    </ReportParameter>
     <ReportParameter Name="customerId">
       <DataType>String</DataType>
       <Prompt>Customer</Prompt>
@@ -2428,21 +2614,54 @@ ORDER BY firstName ASC</CommandText>
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
+    <ReportParameter Name="postingType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>PostingTypeList</DataSetName>
+          <ValueField>value</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Posting Type</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PostingTypeList</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>label</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>5</NumberOfRows>
       <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>customerId</ParameterName>
-        </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>businessCode</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>firstName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>lastName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>customerId</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>postingType</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

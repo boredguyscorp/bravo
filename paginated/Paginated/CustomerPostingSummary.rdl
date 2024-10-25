@@ -172,6 +172,9 @@ WHERE businessCode = @businessCode
           <QueryParameter Name="@userName">
             <Value>=Parameters!userName.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@batchNo">
+            <Value>=Parameters!batchNo.Value</Value>
+          </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT        RefPostingType.name AS postingType, MasterCustomerPosting.amount, MasterCustomerPosting.createdAt, MasterCustomerPosting.userName, MasterCustomerPosting.fullName, MasterCustomerPosting.batchNo, 
                          MasterCustomerPosting.refNo, MasterCustomerPosting.remarks, CONCAT(MasterCustomer.firstName, ', ', MasterCustomer.lastName) AS customerName
@@ -182,7 +185,8 @@ WHERE
 MasterCustomerPosting.postingTypeId IN (@postingType)  AND 
 CAST(MasterCustomerPosting.createdAt AS date) &gt;=@fromDate AND 
 CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate AND 
-MasterCustomerPosting.userName IN (@userName)
+MasterCustomerPosting.userName IN (@userName) AND 
+ISNULL(MasterCustomerPosting.batchNo, '-1') IN (@batchNo)
 ORDER BY createdAt DESC</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -269,6 +273,35 @@ ORDER BY userName ASC</CommandText>
       <Fields>
         <Field Name="userName">
           <DataField>userName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="PostingBatchNoList">
+      <Query>
+        <DataSourceName>SqlServerPortalDw</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@fromDate">
+            <Value>=Parameters!fromDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@toDate">
+            <Value>=Parameters!toDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT DISTINCT(ISNULL(batchNo, '(No Batch No.)')) AS label, ISNULL(batchNo, '-1') as value
+FROM MasterCustomerPosting 
+WHERE
+
+CAST(MasterCustomerPosting.createdAt AS date) &gt;=@fromDate AND 
+CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="label">
+          <DataField>label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="value">
+          <DataField>value</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -2022,7 +2055,6 @@ ORDER BY userName ASC</CommandText>
           <ValueField>userName</ValueField>
         </DataSetReference>
       </DefaultValue>
-      <AllowBlank>true</AllowBlank>
       <Prompt>User</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -2033,11 +2065,29 @@ ORDER BY userName ASC</CommandText>
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
+    <ReportParameter Name="batchNo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>PostingBatchNoList</DataSetName>
+          <ValueField>value</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Batch No</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>PostingBatchNoList</DataSetName>
+          <ValueField>value</ValueField>
+          <LabelField>label</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>3</NumberOfColumns>
-      <NumberOfRows>5</NumberOfRows>
+      <NumberOfRows>6</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2063,6 +2113,11 @@ ORDER BY userName ASC</CommandText>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>4</RowIndex>
           <ParameterName>userName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>5</RowIndex>
+          <ParameterName>batchNo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
