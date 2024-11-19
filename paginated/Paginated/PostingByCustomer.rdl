@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-10-25T10:08:26.6953058Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-11-19T11:03:55.3903060Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -296,7 +296,8 @@ WHERE businessCode = @businessCode</CommandText>
 FROM MasterCustomerPosting AS posting
 JOIN RefPostingType AS postingType ON postingType.id = posting.postingTypeId  
 WHERE customerId = @customerId AND 
-posting.postingTypeId  IN (@postingType)</CommandText>
+posting.postingTypeId  IN (@postingType)
+ORDER BY posting.createdAt DESC</CommandText>
       </Query>
       <Fields>
         <Field Name="amount">
@@ -462,6 +463,9 @@ WHERE customerId = @customerId</CommandText>
                       <CellContents>
                         <Textbox Name="Textbox59">
                           <CanGrow>true</CanGrow>
+                          <UserSort>
+                            <SortExpression>=Fields!postingType.Value</SortExpression>
+                          </UserSort>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -495,12 +499,16 @@ WHERE customerId = @customerId</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox62">
                           <CanGrow>true</CanGrow>
+                          <UserSort>
+                            <SortExpression>=Fields!amount.Value</SortExpression>
+                          </UserSort>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -581,6 +589,9 @@ WHERE customerId = @customerId</CommandText>
                       <CellContents>
                         <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
+                          <UserSort>
+                            <SortExpression>=Fields!createdAt.Value</SortExpression>
+                          </UserSort>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1632,7 +1643,7 @@ WHERE customerId = @customerId</CommandText>
             <Top>0.19444in</Top>
             <Left>5.56508in</Left>
             <Height>1.4432in</Height>
-            <Width>2.38425in</Width>
+            <Width>2.38424in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>

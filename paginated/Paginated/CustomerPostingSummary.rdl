@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-10-25T09:27:48.6530675Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-11-19T11:04:28.7116075Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -1330,7 +1330,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
             <Top>1.58208in</Top>
             <Left>0.03845in</Left>
             <Height>1.51042in</Height>
-            <Width>8.0463in</Width>
+            <Width>8.04632in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1627,7 +1627,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
         <Height>3.32167in</Height>
         <Style />
       </Body>
-      <Width>8.08475in</Width>
+      <Width>8.08477in</Width>
       <Page>
         <PageHeader>
           <Height>1.18403in</Height>
