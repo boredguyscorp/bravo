@@ -58,6 +58,7 @@
     <Report Include="CustomerList.rdl" />
     <Report Include="CustomerPostingSummary.rdl" />
     <Report Include="PostingByCustomer.rdl" />
+    <Report Include="Test.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

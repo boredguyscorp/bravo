@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-12-09T08:40:43.8882645Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-12-09T09:28:15.6401031Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -1003,88 +1003,18 @@ WHERE businessCode = @businessCode
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.7175in</Height>
+        <Height>6.90245cm</Height>
         <Style />
       </Body>
-      <Width>8.08476in</Width>
+      <Width>20.53529cm</Width>
       <Page>
         <PageHeader>
-          <Height>1.18403in</Height>
+          <Height>3.00744cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Rectangle Name="Rectangle1">
               <ReportItems>
-                <Textbox Name="PageNumber2">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>Page </Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value>=Globals!PageNumber</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value> of </Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value>=Globals!TotalPages</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Right</TextAlign>
-                      </Style>
-                    </Paragraph>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Globals!ExecutionTime</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Format>g</Format>
-                            <Color>White</Color>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Right</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>PageNumber</rd:DefaultName>
-                  <Top>0.47222in</Top>
-                  <Left>5.45705in</Left>
-                  <Height>0.61458in</Height>
-                  <Width>2.49228in</Width>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
                 <Textbox Name="businessName">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -1108,7 +1038,6 @@ WHERE businessCode = @businessCode
                   <Left>1.43043in</Left>
                   <Height>0.29167in</Height>
                   <Width>3.95718in</Width>
-                  <ZIndex>1</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -1166,7 +1095,7 @@ WHERE businessCode = @businessCode
                   <Left>1.43043in</Left>
                   <Height>0.61458in</Height>
                   <Width>3.95718in</Width>
-                  <ZIndex>2</ZIndex>
+                  <ZIndex>1</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -1177,20 +1106,6 @@ WHERE businessCode = @businessCode
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Image Name="BusinessLogo">
-                  <Source>External</Source>
-                  <Value>=First(Fields!logo.Value, "DimBusiness")</Value>
-                  <MIMEType>image/jpeg</MIMEType>
-                  <Sizing>FitProportional</Sizing>
-                  <Height>1.18403in</Height>
-                  <Width>1.42606in</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                  </Style>
-                </Image>
                 <Textbox Name="Textbox36">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -1216,7 +1131,7 @@ WHERE businessCode = @businessCode
                   <Left>5.45705in</Left>
                   <Height>0.29167in</Height>
                   <Width>2.49228in</Width>
-                  <ZIndex>4</ZIndex>
+                  <ZIndex>2</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -1228,6 +1143,22 @@ WHERE businessCode = @businessCode
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
+                <Image Name="BusinessLogo">
+                  <Source>External</Source>
+                  <Value>="file:\\boredguys\Users\Public\Documents\shared\images\logo.jpg"</Value>
+                  <MIMEType>image/jpeg</MIMEType>
+                  <Sizing>FitProportional</Sizing>
+                  <Top>0in</Top>
+                  <Left>0.01299in</Left>
+                  <Height>1.18403in</Height>
+                  <Width>1.42606in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Image>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Height>1.18403in</Height>
@@ -1250,108 +1181,11 @@ WHERE businessCode = @businessCode
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.45833in</Height>
+          <Height>1.16416cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Rectangle Name="Rectangle3">
-              <ReportItems>
-                <Textbox Name="PageNumber">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>Page </Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value>=Globals!PageNumber</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value> of </Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value>=Globals!TotalPages</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>PageNumber</rd:DefaultName>
-                  <Height>0.3125in</Height>
-                  <Width>3.74859in</Width>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>6pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="UserID">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Globals!ExecutionTime</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                            <Format>g</Format>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value> - </Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                        <TextRun>
-                          <Value>=User!UserID</Value>
-                          <Style>
-                            <FontFamily>Arial</FontFamily>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style>
-                        <TextAlign>Right</TextAlign>
-                      </Style>
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>UserID</rd:DefaultName>
-                  <Left>4.02778in</Left>
-                  <Height>0.3125in</Height>
-                  <Width>4.04398in</Width>
-                  <ZIndex>1</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <VerticalAlign>Middle</VerticalAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>6pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-              </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>0.125in</Top>
               <Left>0.01299in</Left>
@@ -1371,10 +1205,13 @@ WHERE businessCode = @businessCode
             </Border>
           </Style>
         </PageFooter>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>2.54cm</LeftMargin>
+        <RightMargin>2.54cm</RightMargin>
+        <TopMargin>2.54cm</TopMargin>
+        <BottomMargin>2.54cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -1408,6 +1245,6 @@ WHERE businessCode = @businessCode
   </ReportParametersLayout>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>e4a741d6-5bfe-47af-810d-0a9316561442</rd:ReportID>
 </Report>

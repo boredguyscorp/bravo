@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-10-25T10:51:12.7489421Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-12-09T09:40:41.9604133Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -1874,20 +1874,6 @@ WHERE businessCode = @businessCode</CommandText>
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Image Name="BusinessLogo">
-                  <Source>External</Source>
-                  <Value>=First(Fields!logo.Value, "DimBusiness")</Value>
-                  <MIMEType>image/jpeg</MIMEType>
-                  <Sizing>FitProportional</Sizing>
-                  <Height>1.18403in</Height>
-                  <Width>1.42606in</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                  </Style>
-                </Image>
                 <Textbox Name="Textbox36">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -1913,7 +1899,7 @@ WHERE businessCode = @businessCode</CommandText>
                   <Left>5.45705in</Left>
                   <Height>0.29167in</Height>
                   <Width>2.49228in</Width>
-                  <ZIndex>4</ZIndex>
+                  <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>

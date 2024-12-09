@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-11-19T11:04:28.7116075Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-12-09T09:30:03.0839147Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -1798,20 +1798,6 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Image Name="BusinessLogo">
-                  <Source>External</Source>
-                  <Value>=First(Fields!logo.Value, "DimBusiness")</Value>
-                  <MIMEType>image/jpeg</MIMEType>
-                  <Sizing>FitProportional</Sizing>
-                  <Height>1.18403in</Height>
-                  <Width>1.42606in</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                  </Style>
-                </Image>
                 <Textbox Name="Textbox36">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -1837,7 +1823,7 @@ CAST(MasterCustomerPosting.createdAt AS date) &lt;= @toDate</CommandText>
                   <Left>5.22788in</Left>
                   <Height>0.29167in</Height>
                   <Width>2.72145in</Width>
-                  <ZIndex>4</ZIndex>
+                  <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>

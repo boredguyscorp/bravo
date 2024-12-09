@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.11.35327.3</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-11-19T11:03:55.3903060Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-12-09T09:40:21.1858597Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -499,7 +499,6 @@ WHERE customerId = @customerId</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2402,20 +2401,6 @@ WHERE customerId = @customerId</CommandText>
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Image Name="BusinessLogo">
-                  <Source>External</Source>
-                  <Value>=First(Fields!logo.Value, "DimBusiness")</Value>
-                  <MIMEType>image/jpeg</MIMEType>
-                  <Sizing>FitProportional</Sizing>
-                  <Height>1.18403in</Height>
-                  <Width>1.42606in</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                  </Style>
-                </Image>
                 <Textbox Name="Textbox36">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -2441,7 +2426,7 @@ WHERE customerId = @customerId</CommandText>
                   <Left>5.45705in</Left>
                   <Height>0.29167in</Height>
                   <Width>2.49228in</Width>
-                  <ZIndex>4</ZIndex>
+                  <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
