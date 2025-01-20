@@ -26,23 +26,22 @@
     ],
     "tables": [
       {
-        "name": "DimBusiness",
+        "name": "Business",
         "columns": [
           {
-            "name": "businessId",
+            "name": "id",
             "dataType": "string",
-            "isUnique": true,
-            "sourceColumn": "businessId"
+            "sourceColumn": "id"
           },
           {
-            "name": "businessCode",
+            "name": "code",
             "dataType": "string",
-            "sourceColumn": "businessCode"
+            "sourceColumn": "code"
           },
           {
-            "name": "businessName",
+            "name": "name",
             "dataType": "string",
-            "sourceColumn": "businessName"
+            "sourceColumn": "name"
           },
           {
             "name": "initialCode",
@@ -189,47 +188,184 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
-                "    dbo_DimBusiness = Source{[Schema=\"dbo\",Item=\"DimBusiness\"]}[Data]",
+                "    dbo_Business = Source{[Schema=\"dbo\",Item=\"Business\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(dbo_Business,{{\"ApiKey\", \"ApiKey.1\"}})",
                 "in",
-                "    dbo_DimBusiness"
+                "    #\"Renamed Columns\""
               ]
             }
           }
         ]
       },
       {
-        "name": "DimOrganization",
+        "name": "DimDate",
+        "dataCategory": "Time",
         "columns": [
           {
-            "name": "organizationId",
-            "dataType": "string",
-            "isUnique": true,
-            "sourceColumn": "organizationId"
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey"
           },
           {
-            "name": "organizationCode",
-            "dataType": "string",
-            "sourceColumn": "organizationCode"
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Date"
           },
           {
-            "name": "isActive",
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "DaySuffix",
+            "dataType": "string",
+            "sourceColumn": "DaySuffix"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfWeek"
+          },
+          {
+            "name": "DayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "DayNameOfWeek"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfYear"
+          },
+          {
+            "name": "WeekNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfMonth"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfYear"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "QuarterNumber",
+            "dataType": "int64",
+            "sourceColumn": "QuarterNumber"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "sourceColumn": "MonthYear"
+          },
+          {
+            "name": "MonthYearNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthYearNumber"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth"
+          },
+          {
+            "name": "IsWeekend",
             "dataType": "boolean",
-            "sourceColumn": "isActive"
+            "sourceColumn": "IsWeekend"
           },
           {
-            "name": "createdAt",
-            "dataType": "dateTime",
-            "sourceColumn": "createdAt"
+            "name": "IsHoliday",
+            "dataType": "boolean",
+            "sourceColumn": "IsHoliday"
           },
           {
-            "name": "updatedAt",
-            "dataType": "dateTime",
-            "sourceColumn": "updatedAt"
-          },
-          {
-            "name": "organizationName",
+            "name": "HolidayName",
             "dataType": "string",
-            "sourceColumn": "organizationName"
+            "sourceColumn": "HolidayName"
+          },
+          {
+            "name": "SpecialDays",
+            "dataType": "string",
+            "sourceColumn": "SpecialDays"
+          },
+          {
+            "name": "FinancialYear",
+            "dataType": "int64",
+            "sourceColumn": "FinancialYear"
+          },
+          {
+            "name": "FinancialQuater",
+            "dataType": "int64",
+            "sourceColumn": "FinancialQuater"
+          },
+          {
+            "name": "FinancialMonth",
+            "dataType": "int64",
+            "sourceColumn": "FinancialMonth"
+          },
+          {
+            "name": "FirstDateofYear",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDateofYear"
+          },
+          {
+            "name": "LastDateofYear",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateofYear"
+          },
+          {
+            "name": "FirstDateofQuater",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDateofQuater"
+          },
+          {
+            "name": "LastDateofQuater",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateofQuater"
+          },
+          {
+            "name": "FirstDateofMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDateofMonth"
+          },
+          {
+            "name": "LastDateofMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateofMonth"
+          },
+          {
+            "name": "FirstDateofWeek",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDateofWeek"
+          },
+          {
+            "name": "LastDateofWeek",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDateofWeek"
           }
         ],
         "partitions": [
@@ -241,32 +377,36 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
-                "    dbo_DimOrganization = Source{[Schema=\"dbo\",Item=\"DimOrganization\"]}[Data]",
+                "    dbo_DimDate = Source{[Schema=\"dbo\",Item=\"DimDate\"]}[Data]",
                 "in",
-                "    dbo_DimOrganization"
+                "    dbo_DimDate"
               ]
             }
           }
         ]
       },
       {
-        "name": "DimLocation",
+        "name": "Location",
         "columns": [
           {
-            "name": "locationId",
+            "name": "id",
             "dataType": "string",
-            "isUnique": true,
-            "sourceColumn": "locationId"
+            "sourceColumn": "id"
           },
           {
-            "name": "locationCode",
+            "name": "code",
             "dataType": "string",
-            "sourceColumn": "locationCode"
+            "sourceColumn": "code"
           },
           {
-            "name": "locationName",
+            "name": "name",
             "dataType": "string",
-            "sourceColumn": "locationName"
+            "sourceColumn": "name"
+          },
+          {
+            "name": "organizationId",
+            "dataType": "string",
+            "sourceColumn": "organizationId"
           },
           {
             "name": "businessId",
@@ -279,6 +419,222 @@
             "sourceColumn": "areaId"
           },
           {
+            "name": "bgLocationCode",
+            "dataType": "string",
+            "sourceColumn": "bgLocationCode"
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "sourceColumn": "isActive"
+          },
+          {
+            "name": "isDefault",
+            "dataType": "boolean",
+            "sourceColumn": "isDefault"
+          },
+          {
+            "name": "color",
+            "dataType": "string",
+            "sourceColumn": "color"
+          },
+          {
+            "name": "logo",
+            "dataType": "string",
+            "sourceColumn": "logo"
+          },
+          {
+            "name": "isStore",
+            "dataType": "boolean",
+            "sourceColumn": "isStore"
+          },
+          {
+            "name": "isExcludeFromInventory",
+            "dataType": "boolean",
+            "sourceColumn": "isExcludeFromInventory"
+          },
+          {
+            "name": "isExcludeFromPurchasing",
+            "dataType": "boolean",
+            "sourceColumn": "isExcludeFromPurchasing"
+          },
+          {
+            "name": "isExcludeFromSales",
+            "dataType": "boolean",
+            "sourceColumn": "isExcludeFromSales"
+          },
+          {
+            "name": "isInTransit",
+            "dataType": "boolean",
+            "sourceColumn": "isInTransit"
+          },
+          {
+            "name": "taxLiable",
+            "dataType": "boolean",
+            "sourceColumn": "taxLiable"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "tinNo",
+            "dataType": "string",
+            "sourceColumn": "tinNo"
+          },
+          {
+            "name": "tradeNameCode",
+            "dataType": "string",
+            "sourceColumn": "tradeNameCode"
+          },
+          {
+            "name": "operatedBy",
+            "dataType": "string",
+            "sourceColumn": "operatedBy"
+          },
+          {
+            "name": "address",
+            "dataType": "string",
+            "sourceColumn": "address"
+          },
+          {
+            "name": "address2",
+            "dataType": "string",
+            "sourceColumn": "address2"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city"
+          },
+          {
+            "name": "province",
+            "dataType": "string",
+            "sourceColumn": "province"
+          },
+          {
+            "name": "postalCode",
+            "dataType": "string",
+            "sourceColumn": "postalCode"
+          },
+          {
+            "name": "contactPerson",
+            "dataType": "string",
+            "sourceColumn": "contactPerson"
+          },
+          {
+            "name": "position",
+            "dataType": "string",
+            "sourceColumn": "position"
+          },
+          {
+            "name": "website",
+            "dataType": "string",
+            "sourceColumn": "website"
+          },
+          {
+            "name": "telNo",
+            "dataType": "string",
+            "sourceColumn": "telNo"
+          },
+          {
+            "name": "telNo2",
+            "dataType": "string",
+            "sourceColumn": "telNo2"
+          },
+          {
+            "name": "mobileNo",
+            "dataType": "string",
+            "sourceColumn": "mobileNo"
+          },
+          {
+            "name": "mobileNo2",
+            "dataType": "string",
+            "sourceColumn": "mobileNo2"
+          },
+          {
+            "name": "groupCode",
+            "dataType": "string",
+            "sourceColumn": "groupCode"
+          },
+          {
+            "name": "priceListCode",
+            "dataType": "string",
+            "sourceColumn": "priceListCode"
+          },
+          {
+            "name": "taxCode",
+            "dataType": "string",
+            "sourceColumn": "taxCode"
+          },
+          {
+            "name": "discountCode",
+            "dataType": "string",
+            "sourceColumn": "discountCode"
+          },
+          {
+            "name": "receiptCode",
+            "dataType": "string",
+            "sourceColumn": "receiptCode"
+          },
+          {
+            "name": "createdAt",
+            "dataType": "dateTime",
+            "sourceColumn": "createdAt"
+          },
+          {
+            "name": "updatedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "updatedAt"
+          },
+          {
+            "name": "deletedAt",
+            "dataType": "dateTime",
+            "sourceColumn": "deletedAt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_Location = Source{[Schema=\"dbo\",Item=\"Location\"]}[Data]",
+                "in",
+                "    dbo_Location"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Organization",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "string",
+            "sourceColumn": "id"
+          },
+          {
+            "name": "code",
+            "dataType": "string",
+            "sourceColumn": "code"
+          },
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name"
+          },
+          {
+            "name": "userId",
+            "dataType": "string",
+            "sourceColumn": "userId"
+          },
+          {
             "name": "isActive",
             "dataType": "boolean",
             "sourceColumn": "isActive"
@@ -292,16 +648,6 @@
             "name": "updatedAt",
             "dataType": "dateTime",
             "sourceColumn": "updatedAt"
-          },
-          {
-            "name": "deletedAt",
-            "dataType": "dateTime",
-            "sourceColumn": "deletedAt"
-          },
-          {
-            "name": "organizationId",
-            "dataType": "string",
-            "sourceColumn": "organizationId"
           }
         ],
         "partitions": [
@@ -313,104 +659,16 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
-                "    dbo_DimLocation = Source{[Schema=\"dbo\",Item=\"DimLocation\"]}[Data]",
+                "    dbo_Organization = Source{[Schema=\"dbo\",Item=\"Organization\"]}[Data]",
                 "in",
-                "    dbo_DimLocation"
+                "    dbo_Organization"
               ]
             }
           }
         ]
       },
       {
-        "name": "FactOrganizationSets",
-        "columns": [
-          {
-            "name": "organizationId",
-            "dataType": "string",
-            "sourceColumn": "organizationId"
-          },
-          {
-            "name": "organizationCode",
-            "dataType": "string",
-            "sourceColumn": "organizationCode"
-          },
-          {
-            "name": "organizationName",
-            "dataType": "string",
-            "sourceColumn": "organizationName"
-          },
-          {
-            "name": "businessId",
-            "dataType": "string",
-            "sourceColumn": "businessId"
-          },
-          {
-            "name": "businessCode",
-            "dataType": "string",
-            "sourceColumn": "businessCode"
-          },
-          {
-            "name": "businessName",
-            "dataType": "string",
-            "sourceColumn": "businessName"
-          },
-          {
-            "name": "locationId",
-            "dataType": "string",
-            "sourceColumn": "locationId"
-          },
-          {
-            "name": "locationCode",
-            "dataType": "string",
-            "sourceColumn": "locationCode"
-          },
-          {
-            "name": "locationName",
-            "dataType": "string",
-            "sourceColumn": "locationName"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
-                "    dbo_FactOrganizationSets = Source{[Schema=\"dbo\",Item=\"FactOrganizationSets\"]}[Data]",
-                "in",
-                "    dbo_FactOrganizationSets"
-              ]
-            }
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "OrganizationSets",
-            "levels": [
-              {
-                "name": "organizationName",
-                "ordinal": 0,
-                "column": "organizationName"
-              },
-              {
-                "name": "businessName",
-                "ordinal": 1,
-                "column": "businessName"
-              },
-              {
-                "name": "locationName",
-                "ordinal": 2,
-                "column": "locationName"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "DimCustomer",
+        "name": "POSInventory",
         "columns": [
           {
             "name": "businessCode",
@@ -423,114 +681,29 @@
             "sourceColumn": "locationCode"
           },
           {
-            "name": "id",
+            "name": "itemCode",
             "dataType": "string",
-            "sourceColumn": "id"
+            "sourceColumn": "itemCode"
           },
           {
-            "name": "code",
-            "dataType": "string",
-            "sourceColumn": "code"
-          },
-          {
-            "name": "firstName",
-            "dataType": "string",
-            "sourceColumn": "firstName"
-          },
-          {
-            "name": "lastName",
-            "dataType": "string",
-            "sourceColumn": "lastName"
-          },
-          {
-            "name": "middleName",
-            "dataType": "string",
-            "sourceColumn": "middleName"
-          },
-          {
-            "name": "status",
-            "dataType": "string",
-            "sourceColumn": "status"
-          },
-          {
-            "name": "groupId",
-            "dataType": "string",
-            "sourceColumn": "groupId"
-          },
-          {
-            "name": "classId",
-            "dataType": "string",
-            "sourceColumn": "classId"
-          },
-          {
-            "name": "tradeName",
-            "dataType": "string",
-            "sourceColumn": "tradeName"
-          },
-          {
-            "name": "website",
-            "dataType": "string",
-            "sourceColumn": "website"
-          },
-          {
-            "name": "tinNo",
-            "dataType": "string",
-            "sourceColumn": "tinNo"
-          },
-          {
-            "name": "taxLiable",
-            "dataType": "boolean",
-            "sourceColumn": "taxLiable"
-          },
-          {
-            "name": "taxType",
-            "dataType": "string",
-            "sourceColumn": "taxType"
-          },
-          {
-            "name": "creditLimit",
+            "name": "qty",
             "dataType": "double",
-            "sourceColumn": "creditLimit"
+            "sourceColumn": "qty"
           },
           {
-            "name": "balance",
+            "name": "cost",
             "dataType": "double",
-            "sourceColumn": "balance"
+            "sourceColumn": "cost"
           },
           {
-            "name": "createdAt",
-            "dataType": "dateTime",
-            "sourceColumn": "createdAt"
-          },
-          {
-            "name": "updatedAt",
-            "dataType": "dateTime",
-            "sourceColumn": "updatedAt"
-          },
-          {
-            "name": "availableCredit",
+            "name": "price",
             "dataType": "double",
-            "sourceColumn": "availableCredit"
+            "sourceColumn": "price"
           },
           {
-            "name": "credit",
+            "name": "reorderPoint",
             "dataType": "double",
-            "sourceColumn": "credit"
-          },
-          {
-            "name": "debit",
-            "dataType": "double",
-            "sourceColumn": "debit"
-          },
-          {
-            "name": "deletedAt",
-            "dataType": "dateTime",
-            "sourceColumn": "deletedAt"
-          },
-          {
-            "name": "notes",
-            "dataType": "string",
-            "sourceColumn": "notes"
+            "sourceColumn": "reorderPoint"
           }
         ],
         "partitions": [
@@ -542,49 +715,131 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
-                "    dbo_DimCustomer = Source{[Schema=\"dbo\",Item=\"DimCustomer\"]}[Data]",
+                "    dbo_POSInventory = Source{[Schema=\"dbo\",Item=\"POSInventory\"]}[Data]",
                 "in",
-                "    dbo_DimCustomer"
+                "    dbo_POSInventory"
               ]
             }
           }
-        ],
-        "measures": [
+        ]
+      },
+      {
+        "name": "POSSalesReading",
+        "columns": [
           {
-            "name": "Customer Count",
-            "expression": " COUNTROWS(DimCustomer)"
+            "name": "businessCode",
+            "dataType": "string",
+            "sourceColumn": "businessCode"
+          },
+          {
+            "name": "locationCode",
+            "dataType": "string",
+            "sourceColumn": "locationCode"
+          },
+          {
+            "name": "tranDate",
+            "dataType": "dateTime",
+            "sourceColumn": "tranDate"
+          },
+          {
+            "name": "grossSales",
+            "dataType": "double",
+            "sourceColumn": "grossSales"
+          },
+          {
+            "name": "return",
+            "dataType": "double",
+            "sourceColumn": "return"
+          },
+          {
+            "name": "void",
+            "dataType": "double",
+            "sourceColumn": "void"
+          },
+          {
+            "name": "discount",
+            "dataType": "double",
+            "sourceColumn": "discount"
+          },
+          {
+            "name": "netSales",
+            "dataType": "double",
+            "sourceColumn": "netSales"
+          },
+          {
+            "name": "vatSales",
+            "dataType": "double",
+            "sourceColumn": "vatSales"
+          },
+          {
+            "name": "vatAmount",
+            "dataType": "double",
+            "sourceColumn": "vatAmount"
+          },
+          {
+            "name": "vatExempt",
+            "dataType": "double",
+            "sourceColumn": "vatExempt"
+          },
+          {
+            "name": "zeroRated",
+            "dataType": "double",
+            "sourceColumn": "zeroRated"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/BOREDGUYS\\SQL2022;portal\",",
+                "    dbo_POSSalesReading = Source{[Schema=\"dbo\",Item=\"POSSalesReading\"]}[Data]",
+                "in",
+                "    dbo_POSSalesReading"
+              ]
+            }
           }
         ]
       }
     ],
     "relationships": [
       {
-        "name": "91f3f1bb-560d-46c3-952b-643fdb11a65b",
-        "fromTable": "FactOrganizationSets",
+        "name": "4b034233-9dd2-4f99-b3f2-cd76a851bbbc",
+        "fromTable": "Business",
         "fromColumn": "organizationId",
-        "toTable": "DimOrganization",
-        "toColumn": "organizationId"
+        "toTable": "Organization",
+        "toColumn": "id"
       },
       {
-        "name": "897392d3-cb2e-444c-8331-1329240d5e44",
-        "fromTable": "FactOrganizationSets",
+        "name": "e2536b71-7c67-48ac-a5af-a0ae3bd9d75b",
+        "fromTable": "Location",
         "fromColumn": "businessId",
-        "toTable": "DimBusiness",
-        "toColumn": "businessId"
+        "toTable": "Business",
+        "toColumn": "id"
       },
       {
-        "name": "a6054d05-3473-417b-a940-74f39fc04e42",
-        "fromTable": "FactOrganizationSets",
-        "fromColumn": "locationId",
-        "toTable": "DimLocation",
-        "toColumn": "locationId"
+        "name": "f4f919ab-0514-49d1-b721-c821356dbd07",
+        "fromTable": "POSSalesReading",
+        "fromColumn": "tranDate",
+        "toTable": "DimDate",
+        "toColumn": "Date"
       },
       {
-        "name": "e98ec649-f2a5-480d-b1ff-c7f8d0ac52b1",
-        "fromTable": "DimCustomer",
-        "fromColumn": "businessCode",
-        "toTable": "DimBusiness",
-        "toColumn": "businessCode"
+        "name": "d7fdca4a-7628-49a2-8822-ad852416ef65",
+        "fromTable": "POSInventory",
+        "fromColumn": "locationCode",
+        "toTable": "Location",
+        "toColumn": "bgLocationCode"
+      },
+      {
+        "name": "1c69d745-1467-4d13-8f7f-5643f8510c95",
+        "fromTable": "POSSalesReading",
+        "fromColumn": "locationCode",
+        "toTable": "Location",
+        "toColumn": "bgLocationCode"
       }
     ],
     "annotations": [
