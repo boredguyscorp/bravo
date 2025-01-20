@@ -210,7 +210,8 @@
             "name": "Date",
             "dataType": "dateTime",
             "isKey": true,
-            "sourceColumn": "Date"
+            "sourceColumn": "Date",
+            "formatString": "MM/dd/yyyy"
           },
           {
             "name": "Day",
@@ -260,7 +261,8 @@
           {
             "name": "Month",
             "dataType": "string",
-            "sourceColumn": "Month"
+            "sourceColumn": "Month",
+            "sortByColumn": "MonthNumber"
           },
           {
             "name": "QuarterNumber",
