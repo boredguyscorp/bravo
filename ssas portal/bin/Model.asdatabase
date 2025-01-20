@@ -212,7 +212,13 @@
             "dataType": "dateTime",
             "isKey": true,
             "sourceColumn": "Date",
-            "formatString": "MM/dd/yyyy"
+            "formatString": "MM/dd/yyyy",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"MM/dd/yyyy\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "Day",
